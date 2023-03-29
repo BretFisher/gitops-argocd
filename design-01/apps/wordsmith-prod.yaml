@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wordsmith-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/MostlyDevOps/wordsmith-k8s.git'
+    path: base
+    targetRevision: main
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: wordsmith-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

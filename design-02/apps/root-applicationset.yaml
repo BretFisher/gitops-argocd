@@ -1,0 +1,32 @@
+---
+# https://argo-cd.readthedocs.io/en/latest/operator-manual/applicationset/Generators-Git/
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: root-app-of-apps
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/BretFisher/gitops-argocd.git
+      revision: main
+      directories:
+      - path: apps/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: "my-project"
+      source:
+        repoURL: https://github.com/BretFisher/gitops-argocd.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

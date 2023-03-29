@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+resources:
+  - argocd-namespace.yaml
+  - github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.6.7
+  
+patchesJson6902:
+  - path: argocd-service.yaml
+    target:
+      kind: Service
+      name: argocd-server
+      namespace: argocd
+      version: v1
+
