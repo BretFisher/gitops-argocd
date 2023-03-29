@@ -2,13 +2,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- github.com/MostlyDevOps/wordsmith-k8s/base
-images:
-  - name: bretfisher/wordsmith-api
-    newTag: latest
-  - name: bretfisher/wordsmith-web
-    newTag: latest
-configMapGenerator:
-  - name: db-schema
-    files:
-      - words.sql
+- github.com/MostlyDevOps/wordsmith-k8s/environments/staging01
