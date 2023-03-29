@@ -5,8 +5,6 @@ kind: Application
 metadata:
   name: wordsmith-prod
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:

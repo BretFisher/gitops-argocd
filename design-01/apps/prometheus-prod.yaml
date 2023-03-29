@@ -6,8 +6,6 @@ kind: Application
 metadata:
   name: prometheus-prod
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   sources:
   - repoURL: 'https://prometheus-community.github.io/helm-charts'
