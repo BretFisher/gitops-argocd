@@ -1,3 +1,5 @@
+---
+# https://argo-cd.readthedocs.io/en/latest/operator-manual/applicationset/Generators-Git/
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -6,6 +8,7 @@ metadata:
 spec:
   generators:
   - git:
+      # https://github.com/argoproj/argo-cd/tree/master/applicationset/examples/git-generator-directory/cluster-addons
       repoURL: https://github.com/argoproj/argo-cd.git
       revision: HEAD
       directories:
