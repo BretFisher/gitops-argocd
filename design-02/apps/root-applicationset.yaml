@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/BretFisher/gitops-argocd.git
       revision: main
       directories:
-      - path: apps/*
+      - path: design-02/apps/*
   template:
     metadata:
       name: '{{path.basename}}'
