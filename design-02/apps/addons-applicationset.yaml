@@ -1,4 +1,5 @@
 ---
+# An ApplicationSet that dynamically creates Applications from subdirectories of *another* repo
 # https://argo-cd.readthedocs.io/en/latest/operator-manual/applicationset/Generators-Git/
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -16,6 +17,8 @@ spec:
   template:
     metadata:
       name: '{{path.basename}}'
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
     spec:
       project: default
       source:

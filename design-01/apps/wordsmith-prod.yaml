@@ -1,15 +1,22 @@
 ---
+# Creating an Application that watches a remote Kustomize repo with its local overrides
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: wordsmith-prod
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: 'https://github.com/MostlyDevOps/wordsmith-k8s.git'
     path: base
     targetRevision: main
+    kustomize:
+      images:
+      - bretfisher/wordsmith-api:latest
+      - bretfisher/wordsmith-web:latest
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: wordsmith-prod

@@ -1,9 +1,12 @@
 ---
+# Creating an Application that watches a remote Kustomize repo with its remote overrides
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: wordsmith-staging01
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
