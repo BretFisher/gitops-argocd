@@ -8,3 +8,7 @@ images:
     newTag: latest
   - name: bretfisher/wordsmith-web
     newTag: latest
+configMapGenerator:
+  - name: db-schema
+    files:
+      - github.com/MostlyDevOps/wordsmith-k8s/environments/staging01/words.sql
