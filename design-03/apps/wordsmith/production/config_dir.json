@@ -1,0 +1,13 @@
+{
+  "appName": "wordsmith",
+  "userGivenName": "wordsmith",
+  "destNamespace": "wordsmith-production",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": ".",
+  "srcRepoURL": "https://github.com/mostlydevops/wordsmith-k8s.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "annotations": null,
+  "exclude": "",
+  "include": ""
+}
